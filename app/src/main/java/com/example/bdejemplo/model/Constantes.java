@@ -2,12 +2,24 @@ package com.example.bdejemplo.model;
 
 public class Constantes {
 
-    public static String NAME_BD= "pruebabd";
-    public static int NAME_VERSION =7;
+    public static String NAME_BD = "pruebabd";
+    public static int NAME_VERSION = 14;
 
+    public static String SENTECIACIUDAD =
+            "CREATE TABLE Ciudad (" +
+                    "cod INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nombre TEXT)";
 
-    public static String SENTECIACIUDAD = "Create table Ciudad (cod_ciudad integer, nombre_ciudad text)";
-    public static String CREARDATOS = "Create table Datos (cod_datos integer, nombre_datos text, apellido_datos text, direccion_datos text, cod_ciudad integer)";
+    public static String CREARDATOS =
+            "CREATE TABLE Datos (" +
+                    "cod INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nombre TEXT, " +
+                    "apellido TEXT, " +
+                    "direccion TEXT, " +
+                    "cod_ciudad INTEGER)";
 
-
+    public static String CREARBARRIO =
+            "CREATE TABLE Barrio (" +
+                    "cod INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nombre TEXT NOT NULL)";
 }

@@ -15,15 +15,15 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Constantes.SENTECIACIUDAD);
         db.execSQL(Constantes.CREARDATOS);
-
-
-
+        db.execSQL(Constantes.CREARBARRIO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    db.execSQL("DROP TABLE IF EXISTS Ciudad");
-    db.execSQL("DROP TABLE IF EXISTS Datos");
-    onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS Ciudad");
+        db.execSQL("DROP TABLE IF EXISTS Datos");
+        db.execSQL("DROP TABLE IF EXISTS Barrio");
+        onCreate(db);
     }
+
 }

@@ -5,10 +5,40 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".controller.MainActivity">
 
+    <Button
+        android:id="@+id/btnIrCiudades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Ciudades"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/ic_launcher_background"
+        android:layout_marginTop="40dp"
+        android:padding="16dp"/>
 
-
+    <Button
+        android:id="@+id/btnIrBarrios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Barrios"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/ic_launcher_background"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"/>
+    <Button
+        android:id="@+id/btnIrDatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a Datos"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/ic_launcher_background"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"/>
 
 </LinearLayout>
