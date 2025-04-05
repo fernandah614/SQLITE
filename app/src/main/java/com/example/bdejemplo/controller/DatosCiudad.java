@@ -1,62 +1,65 @@
 package com.example.bdejemplo.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bdejemplo.R;
 import com.example.bdejemplo.model.ManangerDb;
-
 public class DatosCiudad extends AppCompatActivity {
-    public EditText txtCodCiudad, txtNomCiudad;
-    public Button guardar_Ciudad;
+
+    public EditText edt_cod, edt_nom;
+    public Button btn_guardarCiudad;
     public ManangerDb managerDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_ciudad);
-        guardar_Ciudad = findViewById(R.id.guardar_Ciudad);
 
-        //TextInputs
-        guardar_Ciudad = findViewById(R.id.guardar_Ciudad);
-        txtCodCiudad = findViewById(R.id.txtCodCiudad);
-        txtNomCiudad = findViewById(R.id.txtNomCiudad);
 
-        //Conexion base de datos
-        managerDb = new ManangerDb( DatosCiudad.this);
+        edt_cod = findViewById(R.id.edt_cod);
+        edt_nom = findViewById(R.id.edt_nom);
+        btn_guardarCiudad = findViewById(R.id.btn_guardarCiudad);
 
-        guardar_Ciudad.setOnClickListener(new View.OnClickListener() {
+
+        managerDb = new ManangerDb(DatosCiudad.this);
+
+
+        btn_guardarCiudad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 save();
             }
         });
     }
-    public void save() {
-        // Declaro una variable para obtener los datos de los campos de texto
-        String cod_ciudad = txtCodCiudad.getText().toString();
-        String nombre = txtNomCiudad.getText().toString();
 
-        if (cod_ciudad.isEmpty() || nombre.isEmpty()) {
-            Toast.makeText(this, "Ingrese la información requerida", Toast.LENGTH_SHORT).show();
+    public void save() {
+        String codigo = edt_cod.getText().toString().trim();
+        String nombre = edt_nom.getText().toString().trim();
+
+
+        if (codigo.isEmpty()) {
+            Toast.makeText(this, "Ingrese el código de la ciudad", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (nombre.isEmpty()) {
+            Toast.makeText(this, "Ingrese el nombre de la ciudad", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Insertamos los datos en la base de datos y verificamos el resultado
-        long result = managerDb.insertCity(cod_ciudad, nombre);
 
-        // Mostramos un mensaje según el resultado de la inserción
-        if (result >0) {  // Si el valor de retorno no es -1, la inserción fue exitosa
-            Toast.makeText(this, "Ciudad guardada exitosamente", Toast.LENGTH_SHORT).show();
+        long resultado = managerDb.insertCiudad(codigo, nombre);
+
+
+        if (resultado > 0) {
+            Toast.makeText(this, "Ciudad guardada correctamente", Toast.LENGTH_SHORT).show();
+            edt_cod.setText("");
+            edt_nom.setText("");
         } else {
             Toast.makeText(this, "Error al guardar la ciudad", Toast.LENGTH_SHORT).show();
         }
